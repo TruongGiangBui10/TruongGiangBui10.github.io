@@ -73,7 +73,7 @@ function sendpassword3() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.status == 200) {
-            // window.location.href=base+"mess.html"
+            window.location.href="/mess.html"
         } else {
             alert(xhttp.responseText)
         }
