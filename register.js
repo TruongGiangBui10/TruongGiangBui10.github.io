@@ -1,4 +1,4 @@
-
+var base="http://localhost:8081"
 var selectedpieces = [];
 function sendpassword1() {
     var username = document.getElementById("username").value;
@@ -14,7 +14,7 @@ function sendpassword1() {
                     `<div class="col_img">
                     <label class="image_label">
                         <input class="radio1" type="radio" name="picture" value="${url.split("/pictures/")[1]}">
-                        <img class="img-piece" src="${url}" alt="">         
+                        <img class="img-piece" src="${base+url}" alt="">         
                     </label>
                 </div>`
             }
@@ -25,7 +25,7 @@ function sendpassword1() {
             alert(err[0]);
         }
     };
-    xhttp.open("POST", "http://localhost:8081/api/register/layer1", true);
+    xhttp.open("POST", base+"/api/register/layer1", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.responseType = "json";
     xhttp.send(JSON.stringify({ username: String(username), password: String(password) }));
@@ -50,7 +50,7 @@ function sendpassword2() {
                 document.getElementById("layer3").innerHTML +=
                     `<div class="col_img" onclick=selectpiece(id) id="piece${id}">
                 <label class="image_label">
-                    <img class="img-piece" src=${url} alt="">   
+                    <img class="img-piece" src=${base+url} alt="">   
                     <div class="piecenumber">
                         <div id="piecebox${id}" class="piecenumberbox">
                           
@@ -61,7 +61,7 @@ function sendpassword2() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8081/api/register/layer2", true);
+    xhttp.open("POST", base+ "/api/register/layer2", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ password: String(selected) }));
     xhttp.responseType = "json";
@@ -76,7 +76,7 @@ function sendpassword3() {
             console.log("done");
         }
     };
-    xhttp.open("POST", "http://localhost:8081/api/register/layer3", true);
+    xhttp.open("POST", base+"/api/register/layer3", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(selectedpieces));
     xhttp.responseType = "json";
