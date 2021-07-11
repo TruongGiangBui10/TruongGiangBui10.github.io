@@ -12,7 +12,7 @@
 <script>
     fetch("http://localhost:8081/data/message",{
         headers: {
-            'Token':document.cookie.replace("user=","")
+            'Authorization':document.cookie.replace("user=","")
     },
     })
     .then(response=>{
