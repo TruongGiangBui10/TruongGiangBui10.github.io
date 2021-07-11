@@ -82,6 +82,7 @@ function sendpassword3() {
                 console.log(token);
             }
         } else {
+            if(res.length>0)
             alert(xhttp.responseText)
         }
     };
