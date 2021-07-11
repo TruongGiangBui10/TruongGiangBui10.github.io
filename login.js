@@ -76,10 +76,12 @@ function sendpassword3() {
         if (this.status == 200) {
             // window.location.href=base+"mess.html"
             var res=this.response
-            if(res.includes("TG")){
-                var token=res[0];
-                document.cookie=`user${token}`;
-            }
+            console.log(this.getAllResponseHeaders());
+            // if(res[0].includes("TG")){
+            //     var token=res[0];
+            //     document.cookie=`user${token}`;
+            //     console.log(token);
+            // }
         } else {
             // alert(xhttp.responseText)
         }
