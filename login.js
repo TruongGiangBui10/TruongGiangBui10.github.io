@@ -76,14 +76,13 @@ function sendpassword3() {
         if (this.status == 200) {
             // window.location.href=base+"mess.html"
             var res=this.response
-            console.log(this.getAllResponseHeaders());
-            // if(res[0].includes("TG")){
-            //     var token=res[0];
-            //     document.cookie=`user${token}`;
-            //     console.log(token);
-            // }
+            if(res.length>0){
+                var token=res[0];
+                document.cookie=`user=${token}`;
+                console.log(token);
+            }
         } else {
-            // alert(xhttp.responseText)
+            alert(xhttp.responseText)
         }
     };
     xhttp.open("POST", "http://localhost:8081/api/login/layer3", true);
