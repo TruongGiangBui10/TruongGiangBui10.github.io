@@ -1,4 +1,4 @@
-
+var base="file:///home/truonggiang/projects/PRJ2ATTT/"
 var selectedpieces = [];
 function sendpassword1() {
     var username = document.getElementById("username").value;
@@ -25,7 +25,7 @@ function sendpassword1() {
             alert(err[0]);
         }
     };
-    xhttp.open("POST", "http://localhost:8081/api/register/layer1", true);
+    xhttp.open("POST", "http://localhost:8081/api/login/layer1", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.responseType = "json";
     xhttp.send(JSON.stringify({ username: String(username), password: String(password) }));
@@ -43,6 +43,7 @@ function sendpassword2() {
     xhttp.onreadystatechange = function () {
         if (this.status == 200) {
             var data = xhttp.response
+            console.log(data);
             document.getElementById("layer3").innerHTML = "";
             for (var i = 0; i < data.length; i++) {
                 var url = data[i];
@@ -61,7 +62,7 @@ function sendpassword2() {
             }
         }
     };
-    xhttp.open("POST", "http://localhost:8081/api/register/layer2", true);
+    xhttp.open("POST", "http://localhost:8081/api/login/layer2", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({ password: String(selected) }));
     xhttp.responseType = "json";
@@ -73,11 +74,18 @@ function sendpassword3() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.status == 200) {
-            console.log("done");
+            // window.location.href=base+"mess.html"
+            var res=this.response
+            if(res.includes("TG")){
+                var token=res[0];
+                document.cookie=`user${token}`;
+            }
+        } else {
+            // alert(xhttp.responseText)
         }
     };
-    xhttp.open("POST", "http://localhost:8081/api/register/layer3", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.open("POST", "http://localhost:8081/api/login/layer3", true);
+    xhttp.setRequestHeader("Content-type", "application/json;charset=utf-8");
     xhttp.send(JSON.stringify(selectedpieces));
     xhttp.responseType = "json";
     document.getElementById("layer3_box").style.display = "block";
