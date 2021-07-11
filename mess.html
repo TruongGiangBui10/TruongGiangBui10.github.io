@@ -10,7 +10,11 @@
     <button onclick=logout()>Log out</button>
 </body>
 <script>
-    fetch("http://localhost:8081/data/message")
+    fetch("http://localhost:8081/data/message",{
+        headers: {
+            'Token':document.cookie.replace("user=","")
+    },
+    })
     .then(response=>{
         return response.text()
     }).then(text=>{

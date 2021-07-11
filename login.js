@@ -74,7 +74,7 @@ function sendpassword3() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.status == 200) {
-            // window.location.href=base+"mess.html"
+            window.location.href=base+"mess.html"
             var res=this.response
             if(res.length>0){
                 var token=res[0];
