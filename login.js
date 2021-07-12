@@ -30,7 +30,7 @@ function sendpassword1() {
     xhttp.responseType = "json";
     xhttp.send(JSON.stringify({ username: String(username), password: String(password) }));
     document.getElementById("layer2_box").style.display = "block";
-    // document.getElementById("submit1").disabled = true;
+    document.getElementById("submit1").disabled = true;
 }
 function sendpassword2() {
     var input = document.getElementsByName("picture");
@@ -67,7 +67,7 @@ function sendpassword2() {
     xhttp.send(JSON.stringify({ password: String(selected) }));
     xhttp.responseType = "json";
     document.getElementById("layer3_box").style.display = "block";
-    // document.getElementById("submit2").disabled = true;
+    document.getElementById("submit2").disabled = true;
 }
 function sendpassword3() {
     
@@ -81,8 +81,8 @@ function sendpassword3() {
                 localStorage.setItem("Token",token);
             }
         } else {
-            if(res.length>0)
-            alert(xhttp.responseText)
+            if(this.status==406)
+            alert("wrong password")
         }
     };
     xhttp.open("POST", "http://localhost:8081/api/login/layer3", true);
@@ -90,7 +90,6 @@ function sendpassword3() {
     xhttp.send(JSON.stringify(selectedpieces));
     xhttp.responseType = "json";
     document.getElementById("layer3_box").style.display = "block";
-    // document.getElementById("submit2").disabled = true;
 }
 function selectpiece(id) {
     var name = id.split("piece")[1]
