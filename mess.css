@@ -1,0 +1,23 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+}
+.box{
+    width: 400px;
+    height: 600px;
+}
+#mess{
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+#logoutbtn{
+    width: 200px;
+    height: 100px;
+    background-color: burlywood;
+    margin: 30px;
+    color: cornsilk;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
