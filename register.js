@@ -74,6 +74,7 @@ function sendpassword3() {
     xhttp.onreadystatechange = function () {
         if (this.status == 200) {
             console.log("done");
+            window.location.href="/index.html"
         }
     };
     xhttp.open("POST", "http://localhost:8081/api/register/layer3", true);

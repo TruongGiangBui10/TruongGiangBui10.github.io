@@ -19,7 +19,7 @@
         if(response.status==406){
             document.getElementById('logoutbtn').style.display="hidden";
             alert("Acess Denied")
-            window.location.href="/login.html"
+            window.location.href="/index.html"
         }
         return response.text()
     }).then(text=>{
@@ -29,7 +29,7 @@
     function logout(){
         var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-            window.location.href="/login.html"
+        window.location.href="/index.html"
     };
     xhttp.open("POST", "http://localhost:8081/api/logout", true);
     xhttp.setRequestHeader("Content-type", "application/json");
