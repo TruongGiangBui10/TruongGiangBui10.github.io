@@ -78,8 +78,7 @@ function sendpassword3() {
             var res=this.response
             if(res.length>0){
                 var token=res[0];
-                document.cookie=`user=${token}`;
-                console.log(token);
+                localStorage.setItem("Token",token);
             }
         } else {
             if(res.length>0)

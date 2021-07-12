@@ -7,19 +7,25 @@
 </head>
 <body>
     <div id="mess"></div>
-    <button onclick=logout()>Log out</button>
+    <button id="logoutbtn" onclick=logout()>Log out</button>
 </body>
 <script>
     fetch("http://localhost:8081/data/message",{
         headers: {
-            'Authorization':document.cookie.replace("user=","")
+            'Authorization':localStorage.getItem("Token")
     },
     })
     .then(response=>{
+        if(response.status==406){
+            document.getElementById('logoutbtn').style.display="hidden";
+            alert("Acess Denied")
+            window.location.href="/login.html"
+        }
         return response.text()
     }).then(text=>{
         document.getElementById("mess").innerText=text;
     })
+
     function logout(){
         var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -29,6 +35,8 @@
     };
     xhttp.open("POST", "http://localhost:8081/api/logout", true);
     xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.setRequestHeader("Authorization", localStorage.getItem("Token"));
+    xhttp.send();
     }
 </script>
 </html>
